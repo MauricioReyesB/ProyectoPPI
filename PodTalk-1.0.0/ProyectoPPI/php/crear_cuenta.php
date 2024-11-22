@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($conn->query($sql) === TRUE) {
         echo json_encode(['status' => 'success', 'message' => 'Cuenta creada exitosamente']);
     } else {
-        if ($conn->errno === 1062) { // Error de duplicados
+        if ($conn->errno === 1062) { 
             echo json_encode(['status' => 'error', 'message' => 'El email ya está registrado.']);
         } else {
             echo json_encode(['status' => 'error', 'message' => 'Error al crear la cuenta: ' . $conn->error]);

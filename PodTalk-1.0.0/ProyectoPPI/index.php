@@ -44,7 +44,7 @@ https://templatemo.com/tm-584-pod-talk
 
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand me-lg-5 me-0" href="index.html">
+                <a class="navbar-brand me-lg-5 me-0" href="index.php">
                     <img src="images/logo.jpg" class="logo-image img-fluid" alt="templatemo pod talk">
                 </a>
 
@@ -67,11 +67,11 @@ https://templatemo.com/tm-584-pod-talk
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" href="index.html">Pagina principal</a>
+                            <a class="nav-link active" href="index.php">Pagina principal</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
+                            <a class="nav-link" href="php/about.html">About</a>
                         </li>
 
                         <li class="nav-item dropdown">
@@ -79,19 +79,19 @@ https://templatemo.com/tm-584-pod-talk
                                 data-bs-toggle="dropdown" aria-expanded="false">Busqueda rapida</a>
 
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                <li><a class="dropdown-item" href="listing-page.html">Videjuegos</a></li>
+                                <li><a class="dropdown-item" href="php/listing-page.php">Videjuegos</a></li>
 
-                                <li><a class="dropdown-item" href="detail-page.html">Consolas</a></li>
+                                <li><a class="dropdown-item" href="php/detail-page.html">Consolas</a></li>
                             </ul>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contacto</a>
+                            <a class="nav-link" href="php/contact.php">Contacto</a>
                         </li>
                     </ul>
 
                     <div class="ms-4">
-                        <a href="contact.html" class="btn custom-btn custom-border-btn smoothscroll">Iniciar sesion</a>
+                        <a href="php/contact.php" class="btn custom-btn custom-border-btn smoothscroll">Iniciar sesion</a>
                     </div>
                 </div>
             </div>
@@ -119,7 +119,6 @@ https://templatemo.com/tm-584-pod-talk
                                 <div class="owl-carousel-info">
                                     <h4 class="mb-2">
                                         COD BO6
-                                        
                                     </h4>
 
                                     <span class="badge">Guerra</span>
@@ -313,7 +312,7 @@ https://templatemo.com/tm-584-pod-talk
                                 <div class="custom-block-top d-flex mb-1">
                                     <small class="me-4">
                                         <i class="bi-clock-fill custom-icon"></i>
-                                        $1,479
+                                        $1,599
                                     </small>
 
                                     <small>PS5,PC<span class="badge">2</span></small>
@@ -386,7 +385,7 @@ https://templatemo.com/tm-584-pod-talk
 
                             <div class="custom-block-info custom-block-overlay-info">
                                 <h5 class="mb-1">
-                                    <a href="listing-page.html">
+                                    <a href="listing-page.php">
                                         Nintendo Switch
                                     </a>
                                 </h5>
@@ -405,7 +404,7 @@ https://templatemo.com/tm-584-pod-talk
 
                             <div class="custom-block-info custom-block-overlay-info">
                                 <h5 class="mb-1">
-                                    <a href="listing-page.html">
+                                    <a href="listing-page.php">
                                         Xbox
                                     </a>
                                 </h5>
@@ -424,7 +423,7 @@ https://templatemo.com/tm-584-pod-talk
 
                             <div class="custom-block-info custom-block-overlay-info">
                                 <h5 class="mb-1">
-                                    <a href="listing-page.html">
+                                    <a href="listing-page.php">
                                         PS5
                                     </a>
                                 </h5>
@@ -443,7 +442,7 @@ https://templatemo.com/tm-584-pod-talk
 
                             <div class="custom-block-info custom-block-overlay-info">
                                 <h5 class="mb-1">
-                                    <a href="listing-page.html">
+                                    <a href="listing-page.php">
                                         Accesorios
                                     </a>
                                 </h5>
@@ -699,7 +698,7 @@ https://templatemo.com/tm-584-pod-talk
             <div class="row align-items-center">
 
                 <div class="col-lg-2 col-md-3 col-12">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="index.php">
                         <img src="images/logo.jpg" class="logo-image img-fluid" alt="templatemo pod talk">
                     </a>
                 </div>
@@ -740,6 +739,7 @@ https://templatemo.com/tm-584-pod-talk
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/custom.js"></script>
+  
 
 </body>
 

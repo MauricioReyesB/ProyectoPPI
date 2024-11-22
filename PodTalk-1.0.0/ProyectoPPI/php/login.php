@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-header('Content-Type: application/json');
-
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -11,8 +9,7 @@ $dbname = "juegos";
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
-    echo json_encode(['status' => 'error', 'message' => 'Error de conexión a la base de datos']);
-    exit;
+    die("Error de conexión: " . $conn->connect_error);
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -31,13 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (password_verify($contrasena, $user['contraseña'])) {
             $_SESSION['usuario_id'] = $user['id'];
             $_SESSION['usuario_nombre'] = $user['nombre_usuario'];
-
-            echo json_encode(['status' => 'success', 'message' => 'Inicio de sesión exitoso']);
+            header('Location:../index.php?mensaje=sesion_iniciada'); 
         } else {
-            echo json_encode(['status' => 'error', 'message' => 'Contraseña incorrecta']);
+            header('Location:contact.php?mensaje=credenciales_invalidas');
         }
     } else {
-        echo json_encode(['status' => 'error', 'message' => 'Usuario no encontrado']);
+        header('Location:contact.php?mensaje=credenciales_invalidas');
     }
     $stmt->close();
 }
