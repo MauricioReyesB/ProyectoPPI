@@ -22,7 +22,7 @@ if (isset($_SESSION['usuario_id'])) {
     $usuarioNombre = $_SESSION['usuario_nombre'];
 
     $query = "
-        SELECT c.id AS carrito_id, v.titulo, v.precio, c.cantidad 
+        SELECT c.id AS carrito_id, v.id AS videojuego_id, v.titulo, v.precio, c.cantidad 
         FROM carrito c 
         JOIN videojuegos v ON c.videojuego_id = v.id 
         WHERE c.usuario_id = ?";
@@ -49,8 +49,7 @@ if (isset($_SESSION['usuario_id'])) {
                     <li class="list-group-item d-flex justify-content-between align-items-center" style="background: none; border: none; color: white;">
                         <span><?php echo htmlspecialchars($item['titulo']); ?> (<?php echo $item['cantidad']; ?>)</span>
                         <span>$<?php echo number_format($item['precio'] * $item['cantidad'], 2); ?></span>
-                        <a href="eliminar_producto.php?videojuego_id=<?= $producto['videojuego_id'] ?>" class="btn btn-danger btn-sm">Eliminar</a>
-
+                        <a href="eliminar_producto.php?videojuego_id=<?= $item['videojuego_id'] ?>&cantidad=1" class="btn btn-danger btn-sm">Eliminar</a>
                     </li>
                 <?php endforeach; ?>
             </ul>
@@ -64,7 +63,7 @@ if (isset($_SESSION['usuario_id'])) {
             <p class="text-center my-3">El carrito está vacío.</p>
         <?php endif; ?>
         <hr style="border-color: white;">
-        <button class="btn btn-primary form-control mb-3" onclick="location.href='compra.php';">Finalizar Compra</button>
+        <button class="btn btn-primary form-control mb-3" onclick="location.href='finalizar_compra.php';">Finalizar Compra</button>
         <button class="btn btn-light form-control" onclick="toggleMenu();">Cerrar</button>
         <hr>
         <div class="d-flex justify-content-between mt-3">
