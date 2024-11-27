@@ -49,7 +49,7 @@
                                 data-bs-toggle="dropdown" aria-expanded="false">Busqueda rapida</a>
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
                                 <li><a class="dropdown-item" href="php/listing-page.php">Videjuegos</a></li>
-                                <li><a class="dropdown-item" href="php/detail-page.html">Consolas</a></li>
+                                <li><a class="dropdown-item" href="php/detail-page.php">Perfil de usuario</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -177,7 +177,7 @@
                                     <small>PS5/XBOX/PC <span class="badge">3</span></small>
                                 </div>
                                 <h5 class="mb-2">
-                                    <a href="detail-page.html">
+                                    <a href="#">
                                         COD BO6
                                     </a>
                                 </h5>
@@ -239,7 +239,7 @@
                                     <small>PS5,PC<span class="badge">2</span></small>
                                 </div>
                                 <h5 class="mb-2">
-                                    <a href="detail-page.html">
+                                    <a href="#">
                                         Silent Hill
                                     </a>
                                 </h5>
@@ -288,7 +288,7 @@
                     </div>
                     <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
                         <div class="custom-block custom-block-overlay">
-                            <a href="detail-page.html" class="custom-block-image-wrap">
+                            <a href="d#" class="custom-block-image-wrap">
                                 <img src="images/consolas/Ns.jpg"
                                     class="custom-block-image img-fluid" alt="">
                             </a>
@@ -304,7 +304,7 @@
                     </div>
                     <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
                         <div class="custom-block custom-block-overlay">
-                            <a href="detail-page.html" class="custom-block-image-wrap">
+                            <a href="#" class="custom-block-image-wrap">
                                 <img src="images/consolas/XboxSeries.jpg"
                                     class="custom-block-image img-fluid" alt="">
                             </a>
@@ -320,7 +320,7 @@
                     </div>
                     <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
                         <div class="custom-block custom-block-overlay">
-                            <a href="detail-page.html" class="custom-block-image-wrap">
+                            <a href="#" class="custom-block-image-wrap">
                                 <img src="images/consolas/PS5.jpg"
                                     class="custom-block-image img-fluid" alt="">
                             </a>
@@ -336,7 +336,7 @@
                     </div>
                     <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
                         <div class="custom-block custom-block-overlay">
-                            <a href="detail-page.html" class="custom-block-image-wrap">
+                            <a href="#" class="custom-block-image-wrap">
                                 <img src="images/accesorios/AudifonoLG.jpg"
                                     class="custom-block-image img-fluid" alt="">
                             </a>
@@ -365,7 +365,7 @@
                     <div class="col-lg-4 col-12 mb-4 mb-lg-0">
                         <div class="custom-block custom-block-full">
                             <div class="custom-block-image-wrap">
-                                <a href="detail-page.html">
+                                <a href="php/listing-page-php">
                                     <img src="images/accesorios/ControlPS5Morado.jpg" class="custom-block-image img-fluid"
                                         alt="">
                                 </a>
@@ -406,7 +406,7 @@
                     <div class="col-lg-4 col-12 mb-4 mb-lg-0">
                         <div class="custom-block custom-block-full">
                             <div class="custom-block-image-wrap">
-                                <a href="detail-page.html">
+                                <a href="php/listing-page.php">
                                     <img src="images/accesorios/NScontroles.jpg" class="custom-block-image img-fluid"
                                         alt="">
                                 </a>
@@ -449,7 +449,7 @@
                     <div class="col-lg-4 col-12">
                         <div class="custom-block custom-block-full">
                             <div class="custom-block-image-wrap">
-                                <a href="detail-page.html">
+                                <a href="php/listing-page.php">
                                     <img src="images/accesorios/AudifonosVerdes.jpg" class="custom-block-image img-fluid"
                                         alt="">
                                 </a>

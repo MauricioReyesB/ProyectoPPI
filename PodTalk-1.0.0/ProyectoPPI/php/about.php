@@ -1,4 +1,4 @@
-<!--php para agregar producto-->
+<!-- PHP para manejar los datos -->
 <?php
 session_start();
 if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_id'] != 6) {
@@ -21,6 +21,7 @@ $resultDesarrolladores = $conn->query($queryDesarrolladores);
 if (!$resultDesarrolladores) {
     die("Error al obtener los desarrolladores: " . $conn->error);
 }
+// Agregar producto
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nuevo_producto'])) {
     $titulo = $_POST['titulo'];
     $genero = $_POST['genero'];
@@ -62,13 +63,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nuevo_producto'])) {
         echo "<script>alert('Error al agregar el producto');</script>";
     }
 }
-//consulta de ventas
+// Modificar cantidad en almacén
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_quantity'])) {
+    $id = intval($_POST['id']);
+    $new_quantity = intval($_POST['cantidad_en_almacen']);
+    $query = "UPDATE videojuegos SET cantidad_en_almacen = ? WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    if ($stmt) {
+        $stmt->bind_param("ii", $new_quantity, $id);
+        if ($stmt->execute()) {
+            echo "<script>
+                    alert('Cantidad actualizada correctamente.');
+                    window.location.href = 'about.php';
+                  </script>";
+        } else {
+            echo "<script>
+                    alert('Error al actualizar la cantidad.');
+                    window.location.href = 'about.php';
+                  </script>";
+        }
+    }
+}
+// Consultar productos existentes
+$queryProductos = "SELECT id, titulo, cantidad_en_almacen FROM videojuegos";
+$resultProductos = $conn->query($queryProductos);
+if (!$resultProductos) {
+    die("Error al obtener los productos: " . $conn->error);
+}
+// Consultar ventas
 $queryVentas = "SELECT v.id AS venta_id, u.nombre_usuario, j.titulo, v.cantidad, v.fecha_compra, v.ingresos
                 FROM ventas v
                 JOIN usuarios u ON v.usuario_id = u.id
                 JOIN videojuegos j ON v.videojuego_id = j.id";
 $resultVentas = $conn->query($queryVentas);
 ?>
+<!--HTML-->
 <!doctype html>
 <html lang="en">
 <head>
@@ -120,7 +149,7 @@ $resultVentas = $conn->query($queryVentas);
                                 data-bs-toggle="dropdown" aria-expanded="false">Busqueda rapida</a>
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
                                 <li><a class="dropdown-item" href="listing-page.php">Videojuegos</a></li>
-                                <li><a class="dropdown-item" href="detail-page.html">Consolas</a></li>
+                                <li><a class="dropdown-item" href="detail-page.php">Perfil del usuario</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -140,6 +169,34 @@ $resultVentas = $conn->query($queryVentas);
                 </div>
             </div>
         </header>
+<!-- Tabla para modificar productos -->
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Cantidad en Almacén</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php while ($row = $resultProductos->fetch_assoc()) : ?>
+            <tr>
+                <td><?php echo $row['id']; ?></td>
+                <td><?php echo htmlspecialchars($row['titulo']); ?></td>
+                <td>
+                    <form action="about.php" method="post">
+                        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                        <input type="number" name="cantidad_en_almacen" value="<?php echo $row['cantidad_en_almacen']; ?>" class="form-control">
+                </td>
+                <td>
+                        <button type="submit" name="update_quantity" class="btn btn-primary">Actualizar</button>
+                    </form>
+                </td>
+            </tr>
+        <?php endwhile; ?>
+    </tbody>
+</table>
 <!--Agregar nuevo producto-->
 <section class="contact-section section-padding pt-0">
     <div class="container">
@@ -310,7 +367,6 @@ $resultVentas = $conn->query($queryVentas);
                         <form class="custom-form subscribe-form" action="#" method="get" role="form">
                             <input type="email" name="subscribe-email" id="subscribe-email" pattern="[^ @]*@[^ @]*"
                                 class="form-control" placeholder="Tu correo electronico" required="">
-
                             <div class="col-lg-12 col-12">
                                 <button type="submit" class="form-control" id="submit">Suscribirme</button>
                             </div>

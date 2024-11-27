@@ -2,25 +2,19 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
 $host = 'localhost';
 $dbname = 'juegos';
 $username = 'root';
 $password = '';
-
 $conn = new mysqli($host, $username, $password, $dbname);
-
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
-
 $carritoItems = [];
 $totalCarrito = 0;
-
 if (isset($_SESSION['usuario_id'])) {
     $usuarioId = $_SESSION['usuario_id'];
     $usuarioNombre = $_SESSION['usuario_nombre'];
-
     $query = "
         SELECT c.id AS carrito_id, v.id AS videojuego_id, v.titulo, v.precio, c.cantidad 
         FROM carrito c 
@@ -37,7 +31,6 @@ if (isset($_SESSION['usuario_id'])) {
     }
 }
 ?>
-
 <div id="menuCarrito" style="position: fixed; top: 0; right: 0; width: 300px; height: 100%; background-color: #003366; color: white; display: none; z-index: 1000; overflow-y: auto;">
     <div style="padding: 20px;">
         <h4 style="color: white;">Carrito</h4>
@@ -71,11 +64,9 @@ if (isset($_SESSION['usuario_id'])) {
         </div>
     </div>
 </div>
-
 <button onclick="toggleMenu()" style="position: fixed; top: 20px; right: 20px; z-index: 1001; background: #003366; color: white; border: none; padding: 10px 20px; border-radius: 5px;">
     Ver Carrito
 </button>
-
 <script>
     function toggleMenu() {
         const menu = document.getElementById('menuCarrito');

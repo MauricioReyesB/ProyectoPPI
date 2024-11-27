@@ -50,7 +50,7 @@
                                 data-bs-toggle="dropdown" aria-expanded="false">Busqueda rapida</a>
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
                                 <li><a class="dropdown-item" href="listing-page.php">Videjuegos</a></li>
-                                <li><a class="dropdown-item" href="detail-page.html">Consolas</a></li>
+                                <li><a class="dropdown-item" href="detail-page.php">Perfil del usuario</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -116,7 +116,7 @@
                             <div class="row">
                                 <div class="col-lg-12 col-12">
                                     <div class="form-floating">
-                                        <input type="text" name="full-name" id="full-name" class="form-control" placeholder="Full Name" required="">
+                                        <input type="text" name="nombre_usuario" id="nombre_usuario" class="form-control" placeholder="Full Name" required="">
                                         <label for="floatingInput">Nombre completo</label>
                                     </div>
                                 </div>
@@ -128,7 +128,7 @@
                                 </div>
                                 <div class="col-lg-12 col-12">
                                     <div class="form-floating">
-                                        <input type="text" name="contrasena" id="contrasena" class="form-control" placeholder="Contraseña" required="">
+                                        <input type="text" name="contraseña" id="contraseña" class="form-control" placeholder="Contraseña" required="">
                                         <label for="floatingInput">Contraseña</label>
                                     </div>
                                 </div>
@@ -140,7 +140,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-12">
                                     <div class="form-floating">
-                                        <input type="number" name="codigo_postal" id="codigo_postal" class="form-control" placeholder="Código Postal" required="">
+                                        <input type="number" name="direccion_postal" id="direccion_postal" class="form-control" placeholder="Código Postal" required="">
                                         <label for="floatingInput">Código Postal</label>
                                     </div>
                                 </div>
@@ -157,7 +157,7 @@
                                 </div>
                                 <div class="col-lg-12 col-12">
                                     <div class="form-floating">
-                                        <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control" placeholder="Fecha de Nacimiento" required="">
+                                        <input type="date" name="fecha_de_nacimiento" id="fecha_de_nacimiento" class="form-control" placeholder="Fecha de Nacimiento" required="">
                                         <label for="floatingInput">Fecha de Nacimiento</label>
                                     </div>
                                 </div>
@@ -238,30 +238,6 @@
             </div>
         </div>
     </footer>
-<!--Para el formulario-->
-<script>
-    document.getElementById('crearCuentaForm').addEventListener('submit', function(event) {
-        event.preventDefault(); 
-        const formData = new FormData(this);
-        fetch('php/crear_cuenta.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json()) 
-        .then(data => {
-            if (data.status === 'success') {
-                alert(data.message); 
-                this.reset(); 
-            } else {
-                alert(data.message); 
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Hubo un problema al procesar la solicitud.');
-        });
-    });
-</script>
     <!-- JAVASCRIPT FILES -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
