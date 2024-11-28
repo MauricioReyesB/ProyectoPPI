@@ -122,7 +122,7 @@ $resultVentas = $conn->query($queryVentas);
     <main>
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand me-lg-5 me-0" href="index.php">
+                <a class="navbar-brand me-lg-5 me-0" href="../index.php">
                     <img src="../images/logo.jpg" class="logo-image img-fluid" alt="templatemo pod talk">
                 </a>
                 <form action="#" method="get" class="custom-form search-form flex-fill me-3" role="search">

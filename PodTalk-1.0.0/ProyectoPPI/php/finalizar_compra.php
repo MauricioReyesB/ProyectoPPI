@@ -2,21 +2,16 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
 $host = 'localhost';
 $dbname = 'juegos';
 $username = 'root';
 $password = '';
-
 $conn = new mysqli($host, $username, $password, $dbname);
-
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
-
 if (isset($_SESSION['usuario_id'])) {
     $usuarioId = $_SESSION['usuario_id'];
-
     $query = "
         SELECT c.videojuego_id, c.cantidad, v.precio, v.cantidad_en_almacen 
         FROM carrito c 
@@ -26,9 +21,7 @@ if (isset($_SESSION['usuario_id'])) {
     $stmt->bind_param("i", $usuarioId);
     $stmt->execute();
     $result = $stmt->get_result();
-
     $conn->begin_transaction();
-
     try {
         while ($row = $result->fetch_assoc()) {
             $videojuegoId = $row['videojuego_id'];
@@ -36,7 +29,6 @@ if (isset($_SESSION['usuario_id'])) {
             $cantidadDisponible = $row['cantidad_en_almacen'];
             $precio = $row['precio'];
             $ingreso = $cantidadComprada * $precio;
-
             if ($cantidadDisponible >= $cantidadComprada) {
                 $updateStock = "UPDATE videojuegos SET cantidad_en_almacen = cantidad_en_almacen - ? WHERE id = ?";
                 $stmtUpdate = $conn->prepare($updateStock);
@@ -51,12 +43,10 @@ if (isset($_SESSION['usuario_id'])) {
                 throw new Exception("Stock insuficiente para el videojuego ID $videojuegoId.");
             }
         }
-
         $deleteCarrito = "DELETE FROM carrito WHERE usuario_id = ?";
         $stmtDelete = $conn->prepare($deleteCarrito);
         $stmtDelete->bind_param("i", $usuarioId);
         $stmtDelete->execute();
-
         $conn->commit();
         header("Location:listing-page.php?status=success");
         exit;

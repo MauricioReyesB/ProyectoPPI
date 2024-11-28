@@ -2,7 +2,6 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
 $success = isset($_GET['success']) && $_GET['success'] == 1;
 ?>
 <!DOCTYPE html>
